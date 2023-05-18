@@ -16,7 +16,8 @@ async function getBalances(address){
   let counter=0;
 
   for(const address of addresses){
-    console.log(`Address ${counter} balance`,await getBalances(address))
+    console.log(`Address ${counter} balance`,await getBalances(address));
+    counter++;
   }
  }
 
@@ -39,7 +40,7 @@ async function main() {
    await contract.deployed();
    console.log("Address of contract:",contract.address);
 
-   const addresses=[owner.address,from1.address];
+   const addresses=[owner.address,from1.address,from2.address,from3.address];
    console.log("Before buying chai");
 
    await consoleBalances(addresses);
