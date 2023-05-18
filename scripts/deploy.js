@@ -25,7 +25,7 @@ async function getBalances(address){
   for(const memo of memos){
     const timestamp=memo.timestamp;
     const name=memo.name;
-    const from=memo.address;
+    const from=memo.from;
     const message=memo.message;
 
     console.log(`At ${timestamp}, name ${name} , address ${address},message ${message}`);
