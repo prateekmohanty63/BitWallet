@@ -2,14 +2,16 @@ import abi from "./contract/chai.json"
 import {useState,useEffect} from 'react';
 import {ethers} from "ethers";
 import './App.css';
+import Buy from "./components/Buy";
+import Memos from "./components/Memos";
 
 function App() {
 
    const [state,setState]=useState({
     provider:null,
     signer:null,
-    contract:null
-   })
+    contract:null,
+   });
 
    useEffect(()=>{
     const connectWallet=async()=>{
@@ -24,7 +26,8 @@ function App() {
         }
         const provider=new ethers.providers.Web3Provider(ethereum);
         const signer=provider.getSigner();
-        const contract=new ethers.Contract(contractAddress,contractABI);
+        const contract=new ethers.Contract(contractAddress,contractABI,signer);
+        
         setState({provider,signer,contract})
        }
        catch(error){
@@ -37,6 +40,8 @@ function App() {
    console.log(state)
   return (
     <div className="App">
+      <Buy state={state}/>
+      <Memos/>
     </div>
   );
 }
